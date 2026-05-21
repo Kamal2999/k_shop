@@ -1,0 +1,15 @@
+.sidebar{
+    width:200px;
+    height:100vh;
+    background:#eee;
+    padding:20px;
+  }
+  
+  ul{
+    list-style:none;
+    padding:0;
+  }
+  
+  li{
+    padding:10px 0;
+  }
