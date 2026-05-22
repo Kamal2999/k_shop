@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-bar li a {
+    text-decoration: none;
+    padding: 15px;
+    color: black;
+}
+
+.nav-bar[_ngcontent-ng-c241593564] {
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 0px 28px 0px;
+    border-radius: 29px;
+    background: #8E0E00;
+    /* fallback for old browsers */
+    background: linear-gradient(to right, #D1C9DA, #8E5D00);
+}
+
+[_ngcontent-ng-c241593564] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-content: center;
+}
+
+.nav-btn button {
+    padding: 10px 35px 10px 33px;
+    border-radius: 10px;
+}

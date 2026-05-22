@@ -7,11 +7,13 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Navbar } from './components/navbar/navbar';
 import { Register } from './pages/register/register';
 
+import { Home } from './pages/home/home';
+
 export const routes: Routes = [
 
     {
         path: '',
-        component: Login
+        component: Home
     },
 
     {
