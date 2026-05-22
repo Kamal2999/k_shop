@@ -6,9 +6,8 @@
 }
 
 body{
-
+  margin: 0;
   background:#f4f7fc;
-
 }
 
 .login-container{

@@ -13,7 +13,7 @@ export class Api {
 
     return this.http.post(
 
-      'http://property.mail-go.site/api/login',
+      'https://property.mail-go.site/api/login',
       data,
       {
         headers: {

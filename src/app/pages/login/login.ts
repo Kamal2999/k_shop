@@ -18,26 +18,26 @@ import { Api } from '../../services/api';
 
 export class Login {
 
-  phone:string = '';
-  password:string = '';
+  phone: string = '';
+  password: string = '';
 
-  message:string = '';
-  messageType:string = '';
+  message: string = '';
+  messageType: string = '';
 
   constructor(
-    private api:Api,
-    private router:Router
-  ) {}
+    private api: Api,
+    private router: Router
+  ) { }
 
-  login(){
+  login() {
 
     console.log(this.phone);
     console.log(this.password);
 
     let data = {
 
-      phone:this.phone,
-      password:this.password
+      phone: this.phone,
+      password: this.password
 
     };
 
@@ -45,7 +45,7 @@ export class Login {
 
     this.api.login(data).subscribe({
 
-      next:(res:any)=>{
+      next: (res: any) => {
 
         console.log(res);
 
@@ -65,40 +65,47 @@ export class Login {
           JSON.stringify(res.user)
         );
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
           this.router.navigate(
             ['/dashboard']
           );
 
-        },1000);
+        }, 1000);
 
       },
 
-      error:(err)=>{
+      error: (err) => {
 
-        console.log(err.error);
+        console.log(err);
 
         this.messageType = 'error';
 
-        if(err.error.message.phone){
+        if (err.error?.message?.phone) {
 
           this.message =
             err.error.message.phone[0];
 
         }
 
-        else if(err.error.message.password){
+        else if (err.error?.message?.password) {
 
           this.message =
             err.error.message.password[0];
 
         }
 
-        else{
+        else if (err.error?.message) {
 
           this.message =
-            'Login Failed';
+            err.error.message;
+
+        }
+
+        else {
+
+          this.message =
+            'Server Error';
 
         }
 
