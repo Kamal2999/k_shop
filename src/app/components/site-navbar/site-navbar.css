@@ -1,39 +1,86 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.nav-bar ul {
-    list-style-type: none;
+.nav-bar{
     display: flex;
-}
-
-.nav-bar li a {
-    text-decoration: none;
-    padding: 15px;
-    color: black;
-}
-
-.nav-bar[_ngcontent-ng-c241593564] {
-    /* background-color: red; */
-    display: flex;
-    justify-content: space-around;
-    padding: 25px 0px 28px 0px;
-    border-radius: 29px;
-    background: #8E0E00;
-    /* fallback for old browsers */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
     background: linear-gradient(to right, #D1C9DA, #8E5D00);
+    position: relative;
+    border-radius: 20px;
+}
+.nav-logo h1{
+    font-family: "Dancing Script", cursive;
+}
+.nav-link{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.nav-link ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
 }
 
-[_ngcontent-ng-c241593564] {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    align-content: center;
+.nav-link ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
 }
 
-.nav-btn button {
-    padding: 10px 35px 10px 33px;
-    border-radius: 10px;
+.nav-btn{
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-btn{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media(max-width:768px){
+
+    .menu-btn{
+        display: block;
+    }
+
+    .nav-link{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        padding: 20px 0;
+    }
+
+    .nav-link.active{
+        display: flex;
+    }
+
+    .nav-link ul{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-btn{
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+    }
+
 }

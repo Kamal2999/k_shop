@@ -6,6 +6,12 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   templateUrl: './site-navbar.html',
   styleUrl: './site-navbar.css',
-  standalone:true
+  standalone: true
 })
-export class AppNavbar {}
+export class AppNavbar {
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+}
