@@ -1,30 +1,111 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Api } from '../../services/api';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+import { Api } from '../../services/api';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, CommonModule],
+  standalone: true,
+  imports: [
+    FormsModule,
+    CommonModule
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
+
 export class Login {
-  user_id: any = '';
-  password: any = '';
-  constructor(private api: Api) { }
-  login() {
+
+  phone:string = '';
+  password:string = '';
+
+  message:string = '';
+  messageType:string = '';
+
+  constructor(
+    private api:Api,
+    private router:Router
+  ) {}
+
+  login(){
+
+    console.log(this.phone);
+    console.log(this.password);
+
     let data = {
-      user_id: this.user_id,
-      password: this.password
+
+      phone:this.phone,
+      password:this.password
+
     };
 
-    this.api.login(data).subscribe((res: any) => {
+    console.log(data);
 
-      console.log(res);
-      alert(res.message);
+    this.api.login(data).subscribe({
+
+      next:(res:any)=>{
+
+        console.log(res);
+
+        this.message =
+          'Login Successful';
+
+        this.messageType =
+          'success';
+
+        localStorage.setItem(
+          'token',
+          res.access_token
+        );
+
+        localStorage.setItem(
+          'user',
+          JSON.stringify(res.user)
+        );
+
+        setTimeout(()=>{
+
+          this.router.navigate(
+            ['/dashboard']
+          );
+
+        },1000);
+
+      },
+
+      error:(err)=>{
+
+        console.log(err.error);
+
+        this.messageType = 'error';
+
+        if(err.error.message.phone){
+
+          this.message =
+            err.error.message.phone[0];
+
+        }
+
+        else if(err.error.message.password){
+
+          this.message =
+            err.error.message.password[0];
+
+        }
+
+        else{
+
+          this.message =
+            'Login Failed';
+
+        }
+
+      }
 
     });
+
   }
 
 }

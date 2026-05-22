@@ -1,21 +1,49 @@
-<div class="login-box">
+<div class="login-container">
 
-    <h1>Login</h1>
-  
-    <input
-      type="text"
-      placeholder="Enter User ID"
-      [(ngModel)]="user_id"
-    >
-  
-    <input
-      type="password"
-      placeholder="Enter Password"
-      [(ngModel)]="password"
-    >
-  
-    <button (click)="login()">
+  <div class="login-box">
+
+    <div class="login-header">
+
+      <h1>Welcome Back</h1>
+
+      <p>
+        Login to your account
+      </p>
+
+    </div>
+
+    <p class="success" *ngIf="messageType == 'success'">
+      {{message}}
+    </p>
+
+    <p class="error" *ngIf="messageType == 'error'">
+      {{message}}
+    </p>
+
+    <div class="input-box">
+
+      <label>
+        Phone Number
+      </label>
+
+      <input type="text" placeholder="Enter Phone Number" [(ngModel)]="phone" name="phone">
+
+    </div>
+
+    <div class="input-box">
+
+      <label>
+        Password
+      </label>
+
+      <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password">
+
+    </div>
+
+    <button type="button" (click)="login()">
       Login
     </button>
-  
+
   </div>
+
+</div>
