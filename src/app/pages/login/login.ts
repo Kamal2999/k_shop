@@ -31,6 +31,8 @@ export class Login {
 
   login() {
 
+    this.message = '';
+
     console.log(this.phone);
     console.log(this.password);
 
@@ -95,17 +97,10 @@ export class Login {
 
         }
 
-        else if (err.error?.message) {
-
-          this.message =
-            err.error.message;
-
-        }
-
         else {
 
           this.message =
-            'Server Error';
+            'Login Failed';
 
         }
 
