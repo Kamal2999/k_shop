@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="nav-bar">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <div class="nav-bar">
-    <div class="nav-logo">
+  <div class="nav-logo">
       <h1>K-Shop</h1>
-    </div>
-    <div class="menu-btn" (click)="toggleMenu()">
+  </div>
+
+  <div class="menu-btn" (click)="toggleMenu()">
       ☰
-    </div>
-    <div class="nav-link" [class.active]="menuOpen">
+  </div>
+
+  <div class="nav-link" [class.active]="menuOpen">
+
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">About</a></li>
-        <li><a href="/">Feed-Back</a></li>
-        <li><a href="/">Contact Us</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/">About</a></li>
+          <li><a href="/">Feed-Back</a></li>
+          <li><a href="/">Contact Us</a></li>
       </ul>
+
       <div class="nav-btn">
-        <button>Sign-Up</button>
-        <button>Sign-In</button>
+          <button><a href="/login">Sign-Up</a></button>
+          <button>Sign-In</button>
       </div>
 
-    </div>
-
   </div>
-</body>
 
-</html>
+</div>

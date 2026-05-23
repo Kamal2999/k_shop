@@ -17,6 +17,11 @@ export const routes: Routes = [
     },
 
     {
+        path: 'login',
+        component: Login
+    },
+
+    {
         path: 'dashboard',
         component: Dashboard
     },
