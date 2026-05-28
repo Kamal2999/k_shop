@@ -6,62 +6,72 @@
 
       <h1>Welcome Back</h1>
 
-      <p>
-        Login to your account
-      </p>
+      <p>Login to your account</p>
 
     </div>
 
-    <p
-      class="success"
-      *ngIf="messageType == 'success'"
-    >
-      {{message}}
-    </p>
+    <!-- SUCCESS MESSAGE -->
+    <div class="alert success" *ngIf="messageType == 'success'">
+      {{ message }}
+    </div>
 
-    <p
-      class="error"
-      *ngIf="messageType == 'error'"
-    >
-      {{message}}
-    </p>
+    <!-- ERROR MESSAGE -->
+    <div class="alert error" *ngIf="messageType == 'error'">
+      {{ message }}
+    </div>
 
-    <form (ngSubmit)="login()">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
 
+      <!-- PHONE -->
       <div class="input-box">
 
-        <label>
-          Phone Number
-        </label>
+        <label>Phone Number</label>
 
         <input
-          type="text"
+          type="tel"
           placeholder="Enter Phone Number"
           [(ngModel)]="phone"
           name="phone"
-        >
+          required
+          minlength="10"
+          #phoneField="ngModel">
+
+        <small
+          class="field-error"
+          *ngIf="phoneField.invalid && (phoneField.touched || loginForm.submitted)">
+
+          Valid Phone Number Required
+
+        </small>
 
       </div>
 
+      <!-- PASSWORD -->
       <div class="input-box">
 
-        <label>
-          Password
-        </label>
+        <label>Password</label>
 
         <input
           type="password"
           placeholder="Enter Password"
           [(ngModel)]="password"
           name="password"
-        >
+          required
+          minlength="6"
+          #passwordField="ngModel">
+
+        <small
+          class="field-error"
+          *ngIf="passwordField.invalid && (passwordField.touched || loginForm.submitted)">
+
+          Password Minimum 6 Characters
+
+        </small>
 
       </div>
 
       <button type="submit">
-
         Login
-
       </button>
 
     </form>
