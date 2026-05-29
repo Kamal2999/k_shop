@@ -1,46 +1,57 @@
 <div class="login-container">
 
+  <!-- LEFT SIDE -->
+  <div class="login-banner">
+
+    <div class="overlay"></div>
+
+    <div class="banner-content">
+
+      <h1>K-Shop</h1>
+
+      <p>
+        Discover amazing products, best deals,
+        and fast delivery at your fingertips.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
   <div class="login-box">
 
     <div class="login-header">
 
-      <h1>Welcome Back</h1>
+      <h2>Welcome Back 👋</h2>
 
-      <p>Login to your account</p>
+      <p>Login to continue shopping</p>
 
     </div>
 
-    <!-- SUCCESS MESSAGE -->
+    <!-- SUCCESS -->
     <div class="alert success" *ngIf="messageType == 'success'">
       {{ message }}
     </div>
 
-    <!-- ERROR MESSAGE -->
+    <!-- ERROR -->
     <div class="alert error" *ngIf="messageType == 'error'">
       {{ message }}
     </div>
 
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
 
-      <!-- PHONE -->
+      <!-- USER ID -->
       <div class="input-box">
 
-        <label>Phone Number</label>
+        <label>Phone</label>
 
-        <input
-          type="tel"
-          placeholder="Enter Phone Number"
-          [(ngModel)]="phone"
-          name="phone"
-          required
-          minlength="10"
+        <input type="text" placeholder="Enter Phone" [(ngModel)]="phone" name="phone" required minlength="4"
           #phoneField="ngModel">
 
-        <small
-          class="field-error"
-          *ngIf="phoneField.invalid && (phoneField.touched || loginForm.submitted)">
+        <small class="field-error" *ngIf="phoneField.invalid && (phoneField.touched || loginForm.submitted)">
 
-          Valid Phone Number Required
+          Phone Number Required
 
         </small>
 
@@ -51,18 +62,10 @@
 
         <label>Password</label>
 
-        <input
-          type="password"
-          placeholder="Enter Password"
-          [(ngModel)]="password"
-          name="password"
-          required
-          minlength="6"
-          #passwordField="ngModel">
+        <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required
+          minlength="6" #passwordField="ngModel">
 
-        <small
-          class="field-error"
-          *ngIf="passwordField.invalid && (passwordField.touched || loginForm.submitted)">
+        <small class="field-error" *ngIf="passwordField.invalid && (passwordField.touched || loginForm.submitted)">
 
           Password Minimum 6 Characters
 
@@ -70,11 +73,38 @@
 
       </div>
 
+      <!-- OPTIONS -->
+      <div class="login-options">
+
+        <label class="remember">
+
+          <input type="checkbox">
+
+          Remember Me
+
+        </label>
+
+        <a href="#">Forgot Password?</a>
+
+      </div>
+
+      <!-- BUTTON -->
       <button type="submit">
+
         Login
+
       </button>
 
     </form>
+
+    <!-- REGISTER -->
+    <div class="register-link">
+
+      Don’t have an account?
+
+      <a href="/register">Create Account</a>
+
+    </div>
 
   </div>
 

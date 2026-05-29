@@ -31,25 +31,16 @@ export class Login {
   ) { }
 
   login(form: NgForm) {
-
-    // VALIDATION
     if (form.invalid) {
-
       Object.keys(form.controls).forEach(field => {
-
         form.controls[field].markAsTouched();
-
       });
-
       return;
-
     }
 
-    // RESET MESSAGE
     this.message = '';
     this.messageType = '';
-
-    // API DATA
+    
     const data = {
 
       phone: this.phone.trim(),

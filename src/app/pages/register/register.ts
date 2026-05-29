@@ -1,10 +1,95 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Api } from '../../services/api';
+import { CommonModule } from '@angular/common';
+
+import {
+  FormsModule,
+  NgForm
+} from '@angular/forms';
+
+import {
+  Router,
+  RouterLink
+} from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [RouterLink],
+
+  standalone: true,
+
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink
+  ],
+
   templateUrl: './register.html',
-  styleUrl: './register.css',
+
+  styleUrls: ['./register.css']
 })
-export class Register { }
+
+export class Register {
+
+  // FORM FIELDS
+  name: string = '';
+
+  email: string = '';
+
+  phone: string = '';
+
+  password: string = '';
+
+  confirmPassword: string = '';
+
+  // ALERTS
+  message: string = '';
+
+  messageType: string = '';
+
+  constructor(
+    private api: Api,
+    private router: Router
+  ) { }
+
+  // REGISTER FUNCTION
+  register(form: NgForm) {
+    this.message = '';
+    this.messageType = '';
+    if (form.invalid) {
+      Object.keys(form.controls).forEach(field => {
+        form.controls[field].markAsTouched();
+      });
+      return;
+    }
+    if (this.password !== this.confirmPassword) {
+      this.messageType = 'error';
+      this.message = 'Passwords do not match';
+      return;
+    }
+    const data = {
+      name: this.name,
+      email: this.email,
+      phone: this.phone,
+      password: this.password
+    };
+    console.log(data);
+    this.api.register(data).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.messageType = 'success';
+        this.message = res.message || 'Register Successfull Please Login And Enjoy Shopping';
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1500);
+      },
+      error: (err: any) => {
+        console.log(err);
+        this.messageType = 'error';
+        this.message =
+          err?.error?.message ||
+          'Registration Failed';
+      }
+    });
+  }
+
+}
