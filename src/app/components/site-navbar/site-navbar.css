@@ -122,3 +122,12 @@
     }
 
 }
+
+button a {
+    color: white;
+}
+
+button a:hover{
+    transform: translateY(-3px);
+    color: black;
+}

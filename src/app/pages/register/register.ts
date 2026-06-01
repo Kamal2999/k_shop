@@ -30,7 +30,6 @@ import {
 
 export class Register {
 
-  // FORM FIELDS
   name: string = '';
 
   email: string = '';
