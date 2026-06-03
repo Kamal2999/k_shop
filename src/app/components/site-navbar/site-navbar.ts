@@ -5,13 +5,15 @@ import { RouterLink } from '@angular/router';
   selector: 'app-site-navbar',
   imports: [RouterLink],
   templateUrl: './site-navbar.html',
-  styleUrl: './site-navbar.css',
+  styleUrls: ['./site-navbar.css'],
   standalone: true
 })
 export class AppNavbar {
+
   menuOpen = false;
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
+
 }
