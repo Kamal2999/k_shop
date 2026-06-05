@@ -4,11 +4,11 @@
   <div class="register-banner">
 
     <div class="overlay"></div>
-    <div *ngIf="message" [ngClass]="messageType">
+    <!-- <div *ngIf="message" [ngClass]="messageType">
 
       {{ message }}
 
-    </div>
+    </div> -->
     <div class="banner-content">
 
       <h1>Create Your Store Account</h1>
@@ -125,6 +125,10 @@
         Create Account
 
       </button>
+
+      <p *ngIf="message" [style.color]="messageType == 'success' ? 'green' : 'red'">
+        {{ message }}
+      </p>
 
     </form>
 

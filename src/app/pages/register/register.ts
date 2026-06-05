@@ -88,24 +88,17 @@ export class Register {
 
         console.log(res);
 
-        if (res.status) {
+        if (res.status == true) {
 
           this.messageType = 'success';
 
-          this.message =
-            res.message ||
-            'Register Successful Please Login And Enjoy Shopping';
-
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 1500);
+          this.message = res.message;
 
         } else {
 
           this.messageType = 'error';
 
-          this.message =
-            res.message || 'Registration Failed';
+          this.message = res.message;
         }
       },
 
@@ -115,9 +108,7 @@ export class Register {
 
         this.messageType = 'error';
 
-        this.message =
-          err?.error?.message ||
-          'Registration Failed';
+        this.message = 'Registration Failed';
       }
 
     });
