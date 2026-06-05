@@ -4,7 +4,11 @@
   <div class="register-banner">
 
     <div class="overlay"></div>
+    <div *ngIf="message" [ngClass]="messageType">
 
+      {{ message }}
+
+    </div>
     <div class="banner-content">
 
       <h1>Create Your Store Account</h1>
@@ -46,18 +50,10 @@
 
         <label>Full Name</label>
 
-        <input
-          type="text"
-          placeholder="Enter Full Name"
-          [(ngModel)]="name"
-          name="name"
-          required
-          minlength="3"
+        <input type="text" placeholder="Enter Full Name" [(ngModel)]="name" name="name" required minlength="3"
           #nameField="ngModel">
 
-        <small
-          class="field-error"
-          *ngIf="nameField.invalid && (nameField.touched || registerForm.submitted)">
+        <small class="field-error" *ngIf="nameField.invalid && (nameField.touched || registerForm.submitted)">
 
           Full Name Required
 
@@ -70,18 +66,10 @@
 
         <label>Email Address</label>
 
-        <input
-          type="email"
-          placeholder="Enter Email"
-          [(ngModel)]="email"
-          name="email"
-          required
-          email
+        <input type="email" placeholder="Enter Email" [(ngModel)]="email" name="email" required email
           #emailField="ngModel">
 
-        <small
-          class="field-error"
-          *ngIf="emailField.invalid && (emailField.touched || registerForm.submitted)">
+        <small class="field-error" *ngIf="emailField.invalid && (emailField.touched || registerForm.submitted)">
 
           Valid Email Required
 
@@ -94,18 +82,10 @@
 
         <label>Phone Number</label>
 
-        <input
-          type="tel"
-          placeholder="Enter Phone Number"
-          [(ngModel)]="phone"
-          name="phone"
-          required
-          minlength="10"
+        <input type="tel" placeholder="Enter Phone Number" [(ngModel)]="phone" name="phone" required minlength="10"
           #phoneField="ngModel">
 
-        <small
-          class="field-error"
-          *ngIf="phoneField.invalid && (phoneField.touched || registerForm.submitted)">
+        <small class="field-error" *ngIf="phoneField.invalid && (phoneField.touched || registerForm.submitted)">
 
           Valid Phone Number Required
 
@@ -118,18 +98,10 @@
 
         <label>Password</label>
 
-        <input
-          type="password"
-          placeholder="Create Password"
-          [(ngModel)]="password"
-          name="password"
-          required
-          minlength="6"
-          #passwordField="ngModel">
+        <input type="password" placeholder="Create Password" [(ngModel)]="password" name="password" required
+          minlength="6" #passwordField="ngModel">
 
-        <small
-          class="field-error"
-          *ngIf="passwordField.invalid && (passwordField.touched || registerForm.submitted)">
+        <small class="field-error" *ngIf="passwordField.invalid && (passwordField.touched || registerForm.submitted)">
 
           Password Minimum 6 Characters
 
@@ -142,13 +114,8 @@
 
         <label>Confirm Password</label>
 
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          [(ngModel)]="confirmPassword"
-          name="confirmPassword"
-          required
-          #confirmPasswordField="ngModel">
+        <input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword"
+          required #confirmPasswordField="ngModel">
 
       </div>
 
