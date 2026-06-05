@@ -29,7 +29,7 @@ export class Api {
 
     return this.http.post(
 
-      'http://property.mail-go.site/api/register',
+      'https://php-api-1-w5y8.onrender.com/register.php',
       data,
       {
         headers: {
